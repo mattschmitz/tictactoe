@@ -1,0 +1,24 @@
+{
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "simple command line ticktactoe game",
+  "main": "index.js",
+  "dependencies": {
+    "jest": "^19.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattschmitz/tictactoe.git"
+  },
+  "author": "matt schmitz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattschmitz/tictactoe/issues"
+  },
+  "homepage": "https://github.com/mattschmitz/tictactoe#readme"
+}
