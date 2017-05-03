@@ -8,46 +8,44 @@ var rl = readline.createInterface({
 
 var Game = function(){
   this.board = new Board();
-  //
 };
 
 Game.prototype.begin = function(){
   var board = this.board;
-  var playing = true;
-  var player = 'X'; //start with playerX
+  var self = this;
 
   var play = function(player) {
     board.print();
-
-    this.promptPlayer(player, function(input) {
-      var row = input[0];
-      var col = input[2];
-
-      // console.log('row', row, 'col', col)
-      
-      board.addPiece(player, row, col);
-
-      var winner = board.checkForWin();
-
-      if (winner){
-        console.log('looks like ' + winner + ' won!')
-      }
-      //else if no plays left
-        // console.log('looks like it was a tie :/');
-      //else
-        // if (player === X) { player = Y; }
-        // else player = X;
-        // play(player, )
-    });
+    //check for winner: 
+    var winner = board.checkForWin();
+    if (winner){
+      console.log('looks like' + winner + ' won!')
+      rl.close();
+    } else if (board.playPieces === 9) {
+      console.log('looks like it was a tie :/')
+      rl.close();
+    } else {
+      //no winner - ask for input: 
+      self.promptPlayer(player, function(input) {
+        var row = input[0];
+        var col = input[2];
+        board.addPiece(player, row, col);
+        if (player === " X") { 
+          play(" O");
+        } else {
+          play(" X");        
+        }
+      });
+    }
   }
 
-  play.call(this, player);
+  //begin game
+  play(' X');
 };
 
 Game.prototype.promptPlayer = function(player, cb){
-  rl.question('enter row, col - for example "0,1"', (answer) => {
+  rl.question('enter row, col - for example "0,0" to play in the upper left corner \n', (answer) => {
     cb(answer);
-    rl.close();
   });
 };
 
