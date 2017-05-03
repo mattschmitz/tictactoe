@@ -4,11 +4,12 @@
   "description": "simple command line ticktactoe game",
   "main": "index.js",
   "dependencies": {
-    "jest": "^19.0.2"
+    "jest": "^19.0.2",
+    "tape": "^4.6.3"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "jest",
+    "test": "tape test/*.js",
     "start": "node index.js"
   },
   "repository": {
