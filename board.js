@@ -49,9 +49,8 @@ Board.prototype.checkRows = function(){
 }
 
 Board.prototype.checkForWin = function(){
-  if (this.playedPieces < 5) { return false };
+  if (this.playedPieces < 5) { return null };
   //check rows and columns
-
   var checkCols = function(){
     //for each col, if all vals are equal, return val, otherwise return null;
   }
@@ -65,7 +64,7 @@ Board.prototype.checkForWin = function(){
     //get piece at given location
   }
 
-  return this.checkRows() || checkCols() || checkBackDiags(0,0) || checkForwardDiags(2,0)
+  return this.checkRows() // || checkCols() || checkBackDiags(0,0) || checkForwardDiags(2,0)
 }
 
 module.exports = Board;
